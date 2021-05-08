@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', async () => {
     await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('realtime-decisions app is running!');
+    expect(await page.getTitleText()).toEqual('realtime-decisions-ui app is running!');
   });
 
   afterEach(async () => {

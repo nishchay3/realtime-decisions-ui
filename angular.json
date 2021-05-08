@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "realtime-decisions": {
+    "realtime-decisions-ui": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/realtime-decisions",
+            "outputPath": "dist/realtime-decisions-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "realtime-decisions:build"
+            "browserTarget": "realtime-decisions-ui:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "realtime-decisions:build:production"
+              "browserTarget": "realtime-decisions-ui:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "realtime-decisions:build"
+            "browserTarget": "realtime-decisions-ui:build"
           }
         },
         "test": {
@@ -113,16 +113,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "realtime-decisions:serve"
+            "devServerTarget": "realtime-decisions-ui:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "realtime-decisions:serve:production"
+              "devServerTarget": "realtime-decisions-ui:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "realtime-decisions"
+  "defaultProject": "realtime-decisions-ui"
 }
