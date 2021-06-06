@@ -1,0 +1,16 @@
+.topic {
+    height: 70vh;
+}
+.actions {
+    height: 30vh;
+}
+.action-buttons {
+    border-radius: 30px;
+}
+/* .background-image {
+    background-image: url(../../assets/maldives.jpg);
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: white;
+} */

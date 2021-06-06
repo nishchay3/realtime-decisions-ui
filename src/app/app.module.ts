@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignUpComponent } from './dashboard/sign-up/sign-up.component';
 import { SignInComponent } from './dashboard/sign-in/sign-in.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SignInComponent } from './dashboard/sign-in/sign-in.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

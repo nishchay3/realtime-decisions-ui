@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserDetailsReturned } from '../dashboard/models/user.model';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-user-management',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserManagementComponent implements OnInit {
 
-  constructor() { }
+  savedUserDetails: UserDetailsReturned;
+
+  constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
+    this.savedUserDetails = this.authenticationService.getUserDetails();
+    console.log(this.savedUserDetails);
+  }
+
+  logout(): void {
+    this.authenticationService.logout();
   }
 
 }

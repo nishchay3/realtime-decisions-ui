@@ -1,1 +1,84 @@
-<p>sign-up works!</p>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="alertSuccess">
+                Account successfully created!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                    (click)="alertSuccess = false;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="alertFailure">
+                Account creation failed!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                    (click)="alertFailure = false;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form [formGroup]="signUpForm" class="signUpForm" (ngSubmit)="signup()">
+                <h1 class="mb-4">Create Account</h1>
+                <div class="form-group">
+                    <label for="first">Email Address</label>
+                    <input type="text" class="form-control round" [ngClass]="{'is-invalid':signUpForm.controls.firstName.invalid && (signUpForm.controls.firstName.dirty || signUpForm.controls.firstName.touched),
+                'is-valid': signUpForm.controls.firstName.valid}" id="first" formControlName="firstName" required>
+                    <div *ngIf="signUpForm.controls.firstName.errors?.required" class="invalid-feedback">
+                        First Name is required.
+                    </div>
+                    <div *ngIf="signUpForm.controls.firstName.errors?.nameRegexValidators || !signUpForm.controls.firstName.errors?.required"
+                        class="invalid-feedback">
+                        First Name must consists of alphabets only.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="last">Email Address</label>
+                    <input type="text" class="form-control round" [ngClass]="{'is-invalid':signUpForm.controls.lastName.invalid && (signUpForm.controls.lastName.dirty || signUpForm.controls.lastName.touched),
+                'is-valid': signUpForm.controls.lastName.valid}" id="last" formControlName="lastName" required>
+                    <div *ngIf="signUpForm.controls.lastName.errors?.required" class="invalid-feedback">
+                        Last Name is required.
+                    </div>
+                    <div *ngIf="signUpForm.controls.lastName.errors?.nameRegexValidators || !signUpForm.controls.lastName.errors?.required"
+                        class="invalid-feedback">
+                        Last Name must consists of alphabets only.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="emailadd">Email Address</label>
+                    <input type="email" class="form-control round" [ngClass]="{'is-invalid':signUpForm.controls.email.invalid && (signUpForm.controls.email.dirty || signUpForm.controls.email.touched),
+                'is-valid': signUpForm.controls.email.valid}" id="emailadd" formControlName="email" required>
+                    <div *ngIf="signUpForm.controls.email.errors?.required" class="invalid-feedback">
+                        Email is required.
+                    </div>
+                    <div *ngIf="signUpForm.controls.email.errors?.emailRegexValidators || !signUpForm.controls.email.errors?.required"
+                        class="invalid-feedback">
+                        Email format must be correct.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pass">Email Address</label>
+                    <input type="password" class="form-control round" [ngClass]="{'is-invalid':signUpForm.controls.password.invalid && (signUpForm.controls.password.dirty || signUpForm.controls.password.touched),
+                'is-valid': signUpForm.controls.password.valid}" id="pass" formControlName="password" required>
+                    <div *ngIf="signUpForm.controls.password.errors?.required" class="invalid-feedback">
+                        Password is required.
+                    </div>
+                    <div *ngIf="signUpForm.controls.password.errors?.passwordRegexValidators || !signUpForm.controls.password.errors?.required"
+                        class="invalid-feedback">
+                        Password format must be correct.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary form-control round" type="submit" [disabled]="signupToggle">
+                        <span>CREATE ACCOUNT</span>
+                        <span class="spinner-border spinner-border-sm ml-2" role="status" aria-label="true"
+                            *ngIf="signupToggle"></span>
+                    </button>
+                </div>
+            </form>
+            <div class="form-group text-center my-4">
+                OR
+            </div>
+            <div class="form-group">
+                <button class="btn btn-light form-control round" routerLink="/signin">SIGN IN</button>
+            </div>
+        </div>
+    </div>
+</div>

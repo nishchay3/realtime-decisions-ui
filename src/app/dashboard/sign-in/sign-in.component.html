@@ -1,1 +1,51 @@
-<p>sign-in works!</p>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <form [formGroup]="signInForm" class="signInForm" (ngSubmit)="login()">
+                <h1 class="mb-4">Sign In</h1>
+                <div class="form-group">
+                    <label for="emailadd">Email Address</label>
+                    <input type="email" class="form-control round" [ngClass]="{'is-invalid':signInForm.controls.email.invalid && (signInForm.controls.email.dirty || signInForm.controls.email.touched),
+                'is-valid': signInForm.controls.email.valid}" id="emailadd" formControlName="email" required>
+                    <div *ngIf="signInForm.controls.email.errors?.required" class="invalid-feedback">
+                        Email is required.
+                    </div>
+                    <div *ngIf="signInForm.controls.email.errors?.emailRegexValidators || !signInForm.controls.email.errors?.required"
+                        class="invalid-feedback">
+                        Email format must be correct.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pass">Email Address</label>
+                    <input type="password" class="form-control round" [ngClass]="{'is-invalid':signInForm.controls.password.invalid && (signInForm.controls.password.dirty || signInForm.controls.password.touched),
+                'is-valid': signInForm.controls.password.valid}" id="pass" formControlName="password" required>
+                    <div *ngIf="signInForm.controls.password.errors?.required" class="invalid-feedback">
+                        Password is required.
+                    </div>
+                    <div *ngIf="signInForm.controls.password.errors?.passwordRegexValidators || !signInForm.controls.password.errors?.required"
+                        class="invalid-feedback">
+                        Password format must be correct.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary form-control round" type="submit" [disabled]="signinToggle">
+                        <span>SIGN IN</span>
+                        <span class="spinner-border spinner-border-sm ml-2" role="status" aria-label="true"
+                            *ngIf="signinToggle"></span>
+                    </button>
+                </div>
+                <div class="form-group text-center">
+                    <span><small><a>Forget email?</a></small></span>
+                    <span class="mx-3">|</span>
+                    <span><small><a>Forget password?</a></small></span>
+                </div>
+                <div class="form-group text-center">
+                    OR
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-light form-control round" routerLink="/signup">CREATE ACCOUNT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
